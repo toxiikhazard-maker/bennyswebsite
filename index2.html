@@ -1,18 +1,7 @@
-const orderComment = String(r.order_comment || '').trim();
-const copyLines = [
-  '━━━━━━━━━━━━━━━━━━━━',
-  `📋 Benny's Arbetsorder #${r.id}`,
-  `�� Typ av jobb - ${workTypeHeading || '-'}`,
-  `🚗 Nummerplåt - ${String(r.plate || '').trim() || '-'}`,
-];
-if (orderComment) {
-  copyLines.push('');
-  copyLines.push(`📝 Referens - ${orderComment}`);
-}
-copyLines.push('━━━━━━━━━━━━━━━━━━━━');
-const copyText = `${copyLines.join('\n')}\n`;
-const isSent = Number(r.is_sent) === 1;
-const encodedCopy = encodeURIComponent(copyText);
-const copyBtn = isSent
-  ? '<button type="button" class="secondary" disabled>Kopiera</button>'
-  : `<button type="button" onclick="copyWorkOrder(&quot;${encodedCopy}&quot;, this)">Kopiera</button>`;
+  const copyLines = [
+    '✉️ Order Received: ${orderComment}',
+    '🛍️ Items Ordered: ${orderedItems}',
+    '💰 Total Amount: ${totalAmount}',
+    '📦 Shipping Address: ${shippingAddress}',
+    '📞 Contact: ${contactInformation}'
+  ];
